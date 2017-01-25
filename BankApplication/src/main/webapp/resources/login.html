@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Banking Application</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+
+
+</head>
+<body>
+	<div class="container">
+	<h1>Banking Application</h1>
+	<ul class="nav nav-tabs">
+	<li ><a href="#signup" data-toggle="tab">Sign Up</a></li>
+	<li class="active"><a href="#login" data-toggle="tab">Log In</a></li>
+	</ul>
+		<div class="tab-content">
+			<div class="tab-pane fade in active" id="login">
+				<h1>Welcome</h1>
+				<form action="signin" method="post">
+				<div class="field-wrap">
+				<label>Email Address<span class="req">*</span></label>
+				<input type="email" name="email" required autocomplete="off">
+				</div>
+				<div class="field-wrap">
+				<label>Password<span class="req">*</span></label>
+				<input type="password" name="password" required autocomplete="off">
+				</div>
+				<button class="button button-block">Log In</button>
+				</form>
+			</div>
+			<div class="tab-pane fade" id="signup">
+				<h1>Sign Up</h1>
+				<form action="signup" method="post">
+				<div class="top-row">
+				<div class="field-wrap">
+				<label>First Name<span class="req">*</span></label>
+				<input type="text" name="firstname" required autocomplete="off">
+				</div>
+				<div class="field-wrap">
+				<label>Last Name<span class="req">*</span></label>
+				<input type="text" name="lastname" required autocomplete="off">
+				</div>
+				</div>
+				<div class="field-wrap">
+				<label>Email Address<span class="req">*</span></label>
+				<input type="email" name="email" required autocomplete="off">
+				</div>
+				<div class="field-wrap">
+				<label>Password<span class="req">*</span></label>
+				<input type="password" name="password" required autocomplete="off">
+				</div>
+				<button class="button button-block">SignUp</button>
+				</form>
+			</div>
+		</div>
+	</div>
+	<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script >
+	$(".nav li").on("click", function(){
+		$(".nav li").removeClass("active");
+		$(this).addClass()
+	});
+	</script>
+</body>
+
+</html>
