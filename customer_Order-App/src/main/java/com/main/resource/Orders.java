@@ -10,11 +10,11 @@ public class Orders {
 	
 	@Id
 	private String id;
-	@DBRef
-	private customerdetails customerdetails;
 	private String item;
 	private String type;
 	private String price;
+	private String status;
+	
 	private String customerdetailsId;
 	
 	public Orders() {
@@ -22,13 +22,14 @@ public class Orders {
 	}
 	
 	
-	public Orders(String id, String item, String type, String price, String customerdetailsId) {
+	public Orders(String id, String item, String type, String price, String status, String customerdetailsId) {
 		super();
 		this.id = id;
 		this.item = item;
 		this.type = type;
 		this.price = price;
-		this.customerdetails = new customerdetails(customerdetailsId,"","");
+		this.status = status;
+		this.customerdetailsId = customerdetailsId;
 	}
 	
 	
@@ -52,12 +53,17 @@ public class Orders {
 		this.price = price;
 	}
 
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
 
 	public String getId() {
 		return id;
 	}
-
-
 	public void setId(String id) {
 		this.id = id;
 	}
@@ -70,11 +76,6 @@ public class Orders {
 
 	public void setCustomerdetailsId(String customerdetailsId) {
 		this.customerdetailsId = customerdetailsId;
-	}
-
-
-	
-	
-	
+	}	
 
 }

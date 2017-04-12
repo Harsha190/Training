@@ -52,7 +52,7 @@ public class customerController {
 		return orderService.getAllOrders(customerdetailsId);
 	}
 	
-	@RequestMapping("/orders/{id}")
+	@RequestMapping("/customers/orders/{id}")
 	public Orders getOrder(@PathVariable String id){
 		return ordersRepository.findOne(id);
 	}
