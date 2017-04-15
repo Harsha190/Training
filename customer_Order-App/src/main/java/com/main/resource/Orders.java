@@ -1,8 +1,11 @@
 package com.main.resource;
 
+import java.util.Date;
+
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 @Document(collection="orders")
 public class Orders {
@@ -14,6 +17,9 @@ public class Orders {
 	private String type;
 	private String price;
 	private String status;
+	
+	@DateTimeFormat(iso= ISO.DATE_TIME)
+	private Date orderTime;
 	
 	private String customerdetailsId;
 	
@@ -28,6 +34,7 @@ public class Orders {
 		this.item = item;
 		this.type = type;
 		this.price = price;
+		orderTime = new Date();
 		this.status = status;
 		this.customerdetailsId = customerdetailsId;
 	}
@@ -76,6 +83,16 @@ public class Orders {
 
 	public void setCustomerdetailsId(String customerdetailsId) {
 		this.customerdetailsId = customerdetailsId;
+	}
+
+
+	public Date getOrderTime() {
+		return orderTime;
+	}
+
+
+	public void setOrderTime(Date orderTime) {
+		this.orderTime = orderTime;
 	}	
 
 }

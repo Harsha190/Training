@@ -11,12 +11,14 @@ public class customerdetails {
 		
 	}
 	
-	public customerdetails(String id, String name, String gender, String email){
+	public customerdetails(String id, String name, String gender, String email, String city, String password){
 		super();
 		this.id = id;
 		this.name = name;
 		this.gender = gender;
 		this.email = email;
+		this.city = city;
+		this.password = password;
 	}
 	
 	@Id
@@ -24,6 +26,8 @@ public class customerdetails {
 	private String name;
 	private String gender;
 	private String email;
+	private String city;
+	private String password;
 	
 	
 	public String getId() {
@@ -51,6 +55,22 @@ public class customerdetails {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}	
 
 }

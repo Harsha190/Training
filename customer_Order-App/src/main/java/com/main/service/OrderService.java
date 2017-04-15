@@ -9,6 +9,7 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import com.main.repositories.OrdersRepository;
 import com.main.resource.Orders;
@@ -25,7 +26,6 @@ public class OrderService {
 	
 	public List<Orders> getAllOrders(String customerdetailsId){
 		
-		String ty = "clothing";
 		Criteria criteria = Criteria.where("customerdetailsId").is(new ObjectId(customerdetailsId));
 		return mongotemplate.find(Query.query(criteria),Orders.class);
 		
@@ -33,6 +33,14 @@ public class OrderService {
 //		ordersRepository.findByCustomerdetailsId(new ObjectId(customerdetailsId))
 //		.forEach(orders::add);
 //		return orders;
+	}
+	
+	public List<Orders> getAllOrders(){
+		return ordersRepository.findAll();	
+	}
+	
+	public Orders getOrder(@PathVariable String id){
+		return ordersRepository.findOne(id);
 	}
 	
 }
