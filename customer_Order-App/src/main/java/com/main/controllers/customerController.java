@@ -43,21 +43,25 @@ public class customerController {
         return new ResponseEntity<List<customerdetails>>(users, HttpStatus.OK);
 	}
 	
-	@RequestMapping("/{id}")
-	public ResponseEntity<?> getCustomerOne(@PathVariable(value="id") 
-	String id){
-		
-		customerdetails custd = customerService.getCustomer(id);
-		if(custd==null){
+//	@RequestMapping("/{id}")
+//	public ResponseEntity<?> getCustomerOne(@PathVariable(value="id") 
+//	String id){
+//		
+//		customerdetails custd = customerService.getCustomer(id);
+//		if(custd==null){
+//			return new ResponseEntity(new CustomErrorType(new Date(), HttpStatus.NOT_FOUND.value(),"User with id not found"),HttpStatus.NOT_FOUND);
+//		}
+//		return new ResponseEntity<customerdetails>(custd,HttpStatus.OK);
+//	}
+	
+	
+	@RequestMapping("/login")
+	public ResponseEntity<?> getCustomerInfo(@RequestParam(value="id") String id, @RequestParam(value="password")
+	String password){
+		customerdetails custid = customerService.getCustomer(id);
+		if(custid==null){
 			return new ResponseEntity(new CustomErrorType(new Date(), HttpStatus.NOT_FOUND.value(),"User with id not found"),HttpStatus.NOT_FOUND);
 		}
-		return new ResponseEntity<customerdetails>(custd,HttpStatus.OK);
-	}
-	
-	
-	@RequestMapping("/login/{id}")
-	public ResponseEntity<?> getCustomerInfo(@PathVariable(value="id") String id, @RequestParam(value="password")
-	String password){
 		customerdetails custd = customerService.getById(id);
 		if(custd.getPassword().equals(password)){
 			return new ResponseEntity<customerdetails>(custd,HttpStatus.OK);
@@ -68,15 +72,23 @@ public class customerController {
 	
 	
 	@RequestMapping("/customer")
-	public customerdetails getCustomer(@RequestParam(value="id") 
+	public ResponseEntity<?> getCustomer(@RequestParam(value="id") 
 	@RequestHeader(value="id") 
 	String id){
-		return customerService.getCustomer(id);
+		customerdetails custd = customerService.getCustomer(id);
+		if(custd==null){
+			return new ResponseEntity(new CustomErrorType(new Date(), HttpStatus.NOT_FOUND.value(),"User with id not found"),HttpStatus.NOT_FOUND);
+		}
+		return new ResponseEntity<customerdetails>(custd,HttpStatus.OK);
 	}
 	
 	@RequestMapping("/{customerdetailsId}/orders")
-	public List<Orders> getAllOrdersByCustomer(@PathVariable(value="customerdetailsId") String customerdetailsId){	
-		return orderService.getAllOrders(customerdetailsId);
+	public ResponseEntity<List<Orders>> getAllOrdersByCustomer(@PathVariable(value="customerdetailsId") String customerdetailsId){	
+		List<Orders> allOrders =  orderService.getAllOrders(customerdetailsId);
+		if (allOrders.isEmpty()) {
+            return new ResponseEntity(new CustomErrorType(new Date(), HttpStatus.NOT_FOUND.value(),"Page Not Found"),HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<List<Orders>>(allOrders, HttpStatus.OK);
 	}
 	
 	
