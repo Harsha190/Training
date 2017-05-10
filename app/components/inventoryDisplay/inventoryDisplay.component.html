@@ -1,0 +1,12 @@
+<div class="panel panel-success">
+    <div class="panel-heading">Clothing</div>
+    <div class="panel-body" style="overflow:scroll">
+        <div class="col-md-3" *ngFor="let inv of inventorys">
+            <div class="centered-div">{{inv.name}}</div>
+            <img class="thumbnail" src={{inv.img_url}}/>
+            <div class="centered-div" *ngIf="inv.discountPercentage <= 0">${{inv.price}} &nbsp;&nbsp;<span class="glyphicon glyphicon-plus-sign" (click)="addToCart(inv)" aria-hidden="true"></span></div> 
+            <div class="centered-div" *ngIf="inv.discountPercentage > 0"><p style="color:#FF0000">(Save upto {{inv.discountPercentage}}%)</p> <S>${{inv.price}}</S> &nbsp;&nbsp;</div>
+            <div class="centered-div" *ngIf="inv.discountPercentage > 0">${{((inv.price)*(100-inv.discountPercentage))/100 | number:'1.2-2'}}  <span class="glyphicon glyphicon-plus-sign" (click)="addToCart(inv)" aria-hidden="true"></span></div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,25 @@
+<div class="col-md-6 col-md-offset-3">
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Login</h3>
+
+        </div>
+
+        <div class="panel-body">
+            <form name="form" novalidate (submit)="getUser($event)">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" placeholder="Username" [(ngModel)]="data.uname" name="data.uname" required />
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" placeholder="Password" [(ngModel)]="data.pswd" name="data.pswd" required />
+                </div>
+                <div class="form-group">
+                    <button [disabled]="loading" class="btn btn-primary">Login</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

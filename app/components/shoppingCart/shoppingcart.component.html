@@ -1,0 +1,39 @@
+<div *ngIf="cartItems.length <= 0">
+    <h3 class="text-center">No items in the Cart!</h3>
+</div>
+<div class="col-md-12" *ngIf="cartItems.length > 0">
+    <h3 class="text-center">Your Items!</h3>
+    <div class="col-md-10" *ngFor="let cartItem of cartItems; let i = index">
+        <div class="col-md-5">
+            <div><img src={{cartItem?.img_url}} width="100" height="100" /></div><br><br>
+        </div>
+        <div class="col-md-5">
+            <div *ngIf="cartItem?.title">{{cartItem?.title}}</div>
+            <div *ngIf="cartItem?.name">{{cartItem?.name}}</div>
+            <div *ngIf="cartItem?.pages">{{cartItem?.pages}}</div>
+            <div *ngIf="cartItem?.publisher">{{cartItem?.publisher}}</div>
+            <div *ngIf="cartItem?.brand">{{cartItem?.brand}}</div>
+            <div *ngIf="cartItem?.author">{{cartItem?.author}}</div>
+            <div *ngIf="cartItem?.type">{{cartItem?.type}}</div>
+            <div *ngIf="cartItem?.price">${{cartItem?.price}} </div>
+            <div><button (click)="removeItem(cartItem)" class="btn btn-xs btn-danger">Remove Item</button></div>
+        </div>
+    </div>
+
+
+    <div class="warning-center">
+        <div>
+            <h4></h4>
+        </div>
+        <div>
+            <h4>Total Items: {{cartItems.length}}</h4>
+            <h4>Total Price: ${{totalPrice | number:'1.2-2'}}</h4>
+            <br><br>
+            <h6>Total Rewards Earned:{{totalRewards}}</h6>
+        </div>
+        <div>
+            <button class="btn btn-md btn-danger" (click)="clearCart(cartItems)">ClearCart</button>
+            <button (click)="checkout()" class="btn btn-md btn-success">Checkout</button>
+        </div>
+    </div>
+</div>

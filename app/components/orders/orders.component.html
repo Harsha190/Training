@@ -1,0 +1,23 @@
+<div class="container">          
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Item</th>
+        <th>Type</th>
+        <th>Price</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngIf="orders">
+        <td>{{orders.item}}</td>
+        <td>{{orders.type}}</td>
+        <td>{{orders.price}}</td>
+        <td>{{orders.status}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <h4>Shipped To: {{users?.address[0].Apt_No}}<br>{{users?.address[0].City}}
+    <br>{{users?.address[0].State}}
+    <br>{{users?.address[0].ZiCode}}</h4>
+</div>
